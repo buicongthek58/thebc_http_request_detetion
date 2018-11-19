@@ -17,8 +17,10 @@ class Reader(object):
         print("Downloaded {} samples".format(len(data)))
 
         map_result = list(map(self._process_request, data))
+
         self.data = [x[0] for x in map_result]
         self.lengths = [x[1] for x in map_result]
+
         assert len(self.data) == len(self.lengths)
 
     def _process_request(self, req):
@@ -65,7 +67,7 @@ class Data(Reader):
         temp = list(zip(data, lengths))
         random.shuffle(temp)
         data, lengths = zip(*temp)
-        
+
         return data, lengths
 
     def train_generator(self, batch_size, num_epochs):
@@ -93,3 +95,4 @@ class Data(Reader):
             self.data,
             self.lengths,
             self.vocab)
+

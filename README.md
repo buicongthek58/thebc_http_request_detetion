@@ -1,1 +1,0 @@
-# thebc_http_request_detetion
